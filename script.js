@@ -15,9 +15,17 @@ function createSquares() {
         square.style.width = sqWidth;
         square.style.height = sqWidth;
         square.addEventListener('mouseenter', () => {
-            square.style.background = 'gray';
+            square.style.background = randomRGBA();
         })
     }
+};
+
+function randomRGBA() {
+    let o = Math.round;
+    let r = Math.random;
+    let s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    //console.log(o(r()*s));
 };
 
 function sideLengthButton() {
@@ -43,8 +51,6 @@ const squares = document.getElementsByClassName('squares');
 //console.log(squares.length, typeof squares);
 
 
-
-//Step 4 - let user adjust squares per side. 
-//Created button to edit with default 16.
-//How to recreate table
-//How to change square div size
+// Extra Credit: have each pass through of the mouse change the square
+// color to random RGB value. Then try having each pass add another 10%
+// of black so only after 10 passes is it completely black.
