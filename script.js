@@ -6,6 +6,10 @@ let sqWidth = (640/side).toString()+'px';
 //console.log(sqWidth, typeof sqWidth);
 
 function createSquares() {
+    const squareDelete = document.getElementById('container');
+    while (squareDelete.firstChild) {
+        squareDelete.removeChild(squareDelete.lastChild);
+    };
     for (let i=0; i < sideSq; i++) {
         const square = document.createElement('div');
         container.appendChild(square);
@@ -19,6 +23,25 @@ function createSquares() {
         })
     }
 };
+function createSquaresBlack() {
+    const squareDelete = document.getElementById('container');
+    while (squareDelete.firstChild) {
+        squareDelete.removeChild(squareDelete.lastChild);
+    };
+    for (let i=0; i < sideSq; i++) {
+        const square = document.createElement('div');
+        container.appendChild(square);
+        square.setAttribute('class','squares');
+        //square.textContent='test'+i;
+        square.setAttribute('id',i);
+        square.style.width = sqWidth;
+        square.style.height = sqWidth;
+        square.addEventListener('mouseenter', () => {
+            square.style.background = 'black';
+        })
+    }
+};
+
 
 function randomRGBA() {
     let o = Math.round;
@@ -39,10 +62,7 @@ function sideLengthButton() {
     sideSq = side*side;
     sqWidth = (640/side).toString()+'px';
     //console.log(side);
-    const squareDelete = document.getElementById('container');
-    while (squareDelete.firstChild) {
-        squareDelete.removeChild(squareDelete.lastChild);
-    }
+    
     createSquares();
 }
 
