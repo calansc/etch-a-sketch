@@ -37,7 +37,24 @@ function createSquaresBlack() {
         square.style.width = sqWidth;
         square.style.height = sqWidth;
         square.addEventListener('mouseenter', () => {
-            square.style.background = 'black';
+            let objRgba = (document.getElementById(square.id).style.background);
+            //console.log(objRgba);
+            let objElements = objRgba.split(',');
+            if (objElements.length !== 4) {
+                let color = 'rgba(0,0,0,0.1)';
+                square.style.background = color;
+            } else if ( objElements.length == 4) {
+                let alpha = objElements[3]
+                let alpha2 = alpha.trim();
+                let alpha3 = alpha2.slice(0,3);
+                let a = parseFloat(alpha3) + .1;
+                //console.log(a + 'test');
+                let color = 'rgba(0,0,0,' + a + ')';
+                square.style.background = color;
+            } else {
+            let color = 'rgba(0,0,0,0.1)';
+            square.style.background = color;
+            }
         })
     }
 };
@@ -48,8 +65,8 @@ function randomRGBA() {
     let r = Math.random;
     let s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
-    //console.log(o(r()*s));
 };
+let a = 0.1;
 
 function sideLengthButton() {
     let sideLength = prompt('Enter Desired Side Length (1-100)', 16);
@@ -69,8 +86,3 @@ function sideLengthButton() {
 createSquares()
 const squares = document.getElementsByClassName('squares');
 //console.log(squares.length, typeof squares);
-
-
-// Extra Credit: have each pass through of the mouse change the square
-// color to random RGB value. Then try having each pass add another 10%
-// of black so only after 10 passes is it completely black.
