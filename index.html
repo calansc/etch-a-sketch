@@ -6,10 +6,14 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <button id="sideLength" onclick="sideLengthButton()">Click to Edit Squares Per side</button>
-        <button id="blackFill" onClick="createSquaresBlack()">Black Squares</button>
-        <button id="randomFill" onClick="createSquares()">Random Colors!</button>
+        <div id="bigcontainer">
         <div id="container"></div>
+        <div id='buttons'>
+            <button id="sideLength" onclick="sideLengthButton()">Click to Edit Squares Per side</button>
+            <button id="blackFill" onClick="createSquaresBlack()">Black Squares</button>
+            <button id="randomFill" onClick="createSquares()">Random Colors!</button>
+        </div>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
